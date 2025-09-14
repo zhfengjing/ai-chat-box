@@ -2,7 +2,7 @@ import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
 const httpLink = createHttpLink({
-  uri: process.env.REACT_APP_GRAPHQL_ENDPOINT || 'http://localhost:8787/graphql',
+  uri: process.env.REACT_APP_GRAPHQL_ENDPOINT || 'https://ai-chat-box-server.deeperin.info/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {

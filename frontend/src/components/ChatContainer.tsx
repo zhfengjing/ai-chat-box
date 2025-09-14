@@ -50,6 +50,8 @@ const ChatContainer: React.FC = () => {
       }
     }
   );
+  // console.log('sendMessage',sendMessage);
+  // console.log('clearChat',clearChat);
 
   const handleSendMessage = async (content: string) => {
     // 立即添加用户消息到界面

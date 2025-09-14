@@ -72,8 +72,8 @@ export default {
           'http://localhost:3000',
           'https://localhost:3000',
           // 添加您的前端域名
-          /^https:\/\/.*\.pages\.dev$/,
-          /^https:\/\/.*\.workers\.dev$/
+          'https://ai-chat-box-frontend.pages.dev',
+          'https://ai-chat-box-frontend.deeperin.info',
         ],
         credentials: true
       },

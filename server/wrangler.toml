@@ -1,46 +1,64 @@
+#项目基本配置信息
 name = "ai-chat-box-server"
 main = "src/index.ts"
 compatibility_date = "2023-12-01"
 
-#[vars]
+# 环境变量配置
+# 全局变量（不推荐，因为环境不会继承）
+# [vars]
 # 在这里设置您的 OpenAI API Key
 # OPENAI_API_KEY = 'Your OPENAI_API_KEY'
 # preview_id = "your-preview-kv-namespace-id"
 
-
+# 为每个环境单独配置,此为dev环境变量
 [env.development.vars]
  NODE_ENV = "development" 
 # 在这里设置您的 OpenAI API Key
 # OPENAI_API_KEY = 'Your OPENAI_API_KEY'
 # preview_id = "your-preview-kv-namespace-id"
 
+# 为每个环境单独配置,此为production环境变量
 [env.production.vars]
  NODE_ENV = "production"
 # 在这里设置您的 OpenAI API Key
 # OPENAI_API_KEY = 'Your OPENAI_API_KEY'
 # id = "your-preview-kv-namespace-id"
 
-[[env.development.kv_namespaces]]
-binding = "CHAT_STORAGE"
-preview_id = "e68099a3bc1943759a1a6b315ddc317f"  # 用于 wrangler dev
-id = "ce2966b25d6d4c838bcc48f673f8dc40"
+# 存储服务配置
+# 全局 KV（不推荐)
+# [[kv_namespaces]]
+# binding = "CHAT_STORAGE"
+# id = "ce2966b25d6d4c838bcc48f673f8dc40"
 
-
-[[env.production.kv_namespaces]]
-binding = "CHAT_STORAGE"
-preview_id = "e68099a3bc1943759a1a6b315ddc317f"  # 用于 wrangler dev
-id = "ce2966b25d6d4c838bcc48f673f8dc40"
-
+#构建配置
 [build]
-#command = "npm run build"
-watch_dir = "src"  # 只监听源代码目录
+# command = "npm run build"
+watch_dir = ["src"]  # 只监听源代码目录   
 
 [env.production]
 name = "ai-chat-box-server"
 
+# 环境特定 KV 配置（推荐）
+[[env.production.kv_namespaces]]
+binding = "CHAT_STORAGE"
+id = "ce2966b25d6d4c838bcc48f673f8dc40"
+
 [env.staging]
 name = "ai-chat-box-server-staging"
+
 
 # 或者禁用某些目录的监听
 [env.development]
 watch_dir = ["!node_modules", "!dist"]
+
+# 环境特定 KV 配置（推荐）
+[[env.development.kv_namespaces]]
+binding = "CHAT_STORAGE"
+preview_id = "e68099a3bc1943759a1a6b315ddc317f"  # 用于 wrangler dev
+id = "d3a7b21de556407caacc39cb6410ade7"
+
+
+# 敏感信息（Secrets）
+
+# 注意：secrets 不在 toml 中配置，而是通过命令行设置
+# wrangler secret put SECRET_NAME --env production/development

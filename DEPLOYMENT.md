@@ -29,8 +29,8 @@ cd server
 wrangler login
 
 # 2. 创建 KV 命名空间
-wrangler kv:namespace create "CHAT_STORAGE"
-wrangler kv:namespace create "CHAT_STORAGE" --preview
+wrangler kv namespace create "CHAT_STORAGE"
+wrangler kv namespace create "CHAT_STORAGE" --preview
 
 # 3. 设置 OpenAI API Key
 wrangler secret put OPENAI_API_KEY
