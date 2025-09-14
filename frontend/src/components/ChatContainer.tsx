@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
 import { SEND_MESSAGE, GET_CHAT_HISTORY, CLEAR_CHAT } from '../graphql/queries';
 import { Message, SendMessageResponse, GetChatHistoryResponse, ClearChatResponse } from '../types';
@@ -10,7 +10,7 @@ const ChatContainer: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   
   // GraphQL 查询和变更
-  const { data: historyData, loading: historyLoading, refetch: refetchHistory } = useQuery<GetChatHistoryResponse>(
+  const { loading: historyLoading, refetch: refetchHistory } = useQuery<GetChatHistoryResponse>(
     GET_CHAT_HISTORY,
     {
       variables: { limit: 50 },
