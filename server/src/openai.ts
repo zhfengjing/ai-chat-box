@@ -73,7 +73,7 @@ export class OpenAIService {
       }
 
       return data.choices[0].message.content;
-    } catch (error) {
+    } catch (error:any) {
       console.error('Error calling OpenAI API:', error);
       console.error('OpenAI Service Error Details:', {
         message: error.message,
