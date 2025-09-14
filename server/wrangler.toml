@@ -1,0 +1,46 @@
+name = "ai-chat-box-server"
+main = "src/index.ts"
+compatibility_date = "2023-12-01"
+
+#[vars]
+# 在这里设置您的 OpenAI API Key
+# OPENAI_API_KEY = 'Your OPENAI_API_KEY'
+# preview_id = "your-preview-kv-namespace-id"
+
+
+[env.development.vars]
+ NODE_ENV = "development" 
+# 在这里设置您的 OpenAI API Key
+# OPENAI_API_KEY = 'Your OPENAI_API_KEY'
+# preview_id = "your-preview-kv-namespace-id"
+
+[env.production.vars]
+ NODE_ENV = "production"
+# 在这里设置您的 OpenAI API Key
+# OPENAI_API_KEY = 'Your OPENAI_API_KEY'
+# id = "your-preview-kv-namespace-id"
+
+[[env.development.kv_namespaces]]
+binding = "CHAT_STORAGE"
+preview_id = "e68099a3bc1943759a1a6b315ddc317f"  # 用于 wrangler dev
+id = "ce2966b25d6d4c838bcc48f673f8dc40"
+
+
+[[env.production.kv_namespaces]]
+binding = "CHAT_STORAGE"
+preview_id = "e68099a3bc1943759a1a6b315ddc317f"  # 用于 wrangler dev
+id = "ce2966b25d6d4c838bcc48f673f8dc40"
+
+[build]
+#command = "npm run build"
+watch_dir = "src"  # 只监听源代码目录
+
+[env.production]
+name = "ai-chat-box-server"
+
+[env.staging]
+name = "ai-chat-box-server-staging"
+
+# 或者禁用某些目录的监听
+[env.development]
+watch_dir = ["!node_modules", "!dist"]

@@ -1,0 +1,22 @@
+{
+    "name": "ai-chat-box-server",
+    "version": "1.0.0",
+    "description": "AI Chat Box GraphQL Server for Cloudflare Workers",
+    "main": "src/index.ts",
+    "scripts": {
+        "dev": "wrangler dev --local",
+        "deploy": "wrangler deploy",
+        "build": "wrangler deploy --dry-run",
+        "tail": "wrangler tail"
+    },
+    "dependencies": {
+        "graphql": "^16.8.1",
+        "graphql-yoga": "^5.0.0"
+    },
+    "devDependencies": {
+        "@cloudflare/workers-types": "^4.20231025.0",
+        "@types/node": "^20.8.10",
+        "typescript": "^5.2.2",
+        "wrangler": "^4.36.0"
+    }
+}
