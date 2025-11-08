@@ -1,6 +1,7 @@
 export interface Env {
   OPENAI_API_KEY: string;
   CHAT_STORAGE: KVNamespace;
+  OPENAI_BASE_URL?: string;
 }
 
 export interface Message {

@@ -57,7 +57,7 @@ export default {
 
     // 创建服务实例
     const storage = new ChatStorageService(env.CHAT_STORAGE);
-    const openai = new OpenAIService(env.OPENAI_API_KEY);
+    const openai = new OpenAIService(env.OPENAI_API_KEY,env.OPENAI_BASE_URL);
 
     // 创建 GraphQL Yoga 实例
     const yoga = createYoga({

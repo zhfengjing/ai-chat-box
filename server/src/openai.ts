@@ -3,10 +3,11 @@ import { Env, Message, OpenAIMessage, OpenAIResponse } from './types';
 export class OpenAIService {
   private apiKey: string;
   // private baseURL = 'https://api.openai-proxy.com/v1';//本地开发访问localhost:8787/graphql时使用
-  private baseURL = 'https://api.openai.com/v1';//部署到生产环境时使用
+  private baseURL =  'https://api.openai.com/v1';//部署到生产环境时使用
 
-  constructor(apiKey: string) {
+  constructor(apiKey: string,baseURL?:string) {
     this.apiKey = apiKey;
+    this.baseURL = baseURL || this.baseURL;
   }
 
   async generateResponse(messages: Message[]): Promise<string> {
