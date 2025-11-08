@@ -22,7 +22,6 @@ const schema = createSchema({
 export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
-    console.log('request=',url);
     // 检查必要的环境变量
     console.log('env=',env);
     if (!env.OPENAI_API_KEY) {
